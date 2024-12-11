@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment {
+        instagram="@juanfidel"
+    }
+    stages {
+        stage("Saludo 1") {
+            steps {
+                echo "Hola saludo 1"
+            }
+        }
+        stage("Saludo 2") {
+            steps {
+                echo "paso 1: saludando a messi"
+                echo " despues, como estas!"
+            }
+        }
+        stage("Variables de entorno impresas") {
+            steps {
+                echo "${env.instagram}"
+                echo "$instagram"
+                echo "${instagram}"
+                sh "echo 'hola mundo'"
+                echo "---------------------------------------------------"
+                sh "echo '${env.instagram}'"
+                sh "echo '$instagram'"
+                sh "echo '${instagram}'"
+            }
+        }
+        stage("Variables de entorno impresas del System de jenkins") {
+            steps {
+                 echo "${env.INSTAGRAM}"
+                echo "$INSTAGRAM"
+                echo "${INSTAGRAM}"
+              
+                sh "echo ${env.INSTAGRAM}"
+                sh "echo $INSTAGRAM"
+                sh "echo ${INSTAGRAM}"
+                sh """echo $INSTAGRAM"""
+              
+            }
+        }
+    }
+    
+}
